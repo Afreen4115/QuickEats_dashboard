@@ -10,7 +10,7 @@ const AddFirm = () => {
   const [category, setCategory] = useState([]);
   const [region, setRegion] = useState([]);
   const [offer, setOffer] = useState("");
-  const [file, setFile] = useState(null);
+  const [image, setImage] = useState(null);
   const [loading, setLoading] = useState(false); 
 
 
@@ -33,7 +33,7 @@ const AddFirm = () => {
  
   const handleImageUpload =(event)=>{
       const selectedImage = event.target.files[0];
-      setFile(selectedImage)
+      setImage(selectedImage)
   }
 
   const handleFirmSubmit= async(e)=>{
@@ -50,7 +50,7 @@ const AddFirm = () => {
           formData.append('firmName', firmName);
           formData.append('area', area);
           formData.append('offer', offer);
-          formData.append('image', file)
+          formData.append('image', image)
 
           category.forEach((value)=>{
             formData.append('category', value)
@@ -74,10 +74,10 @@ const AddFirm = () => {
             setCategory([]);
             setRegion([]);
             setOffer("");
-            setFile(null)
+            setImage(null)
             alert("Firm added Successfully")
           }else if(data.message === "vendor can have only one firm"){
-              alert("Firm Exists 🥗. Only 1 firm can be added  ")
+              alert("Firm Exists. Only 1 firm can be added  ")
           } else{
               alert('Failed to add Firm')
           }
